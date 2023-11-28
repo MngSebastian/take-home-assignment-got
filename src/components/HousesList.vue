@@ -2,7 +2,7 @@
   <div
     v-for="house in houseData"
     :key="house.name"
-    class="flex flex-col overflow-scroll items-start w-8/12"
+    class="flex flex-col items-start w-8/12"
   >
     <button @click="toggleSelectedHouse(house)" class="focus:outline-none">
       <p class="bg-blue-500 rounded-xl text-xl text-white m-2 p-2">

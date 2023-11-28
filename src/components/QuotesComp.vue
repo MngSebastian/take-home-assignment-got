@@ -1,5 +1,5 @@
 <template>
-  <div class="pt-20 p-8 border-2 w-8/12 mb-6">
+  <div class="p-8 border-2 w-8/12 mb-6">
     <ul>
       <li
         v-for="(quote, index) in randomQuotes"

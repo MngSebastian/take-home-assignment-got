@@ -1,6 +1,6 @@
 <template>
   <div
-    className="flex flex-col items-center bg-primary  w-screen h-screen  pt-12"
+    className="flex flex-col items-center bg-primary  w-screen h-full  pt-12"
   >
     <NavBar />
     <router-view></router-view>

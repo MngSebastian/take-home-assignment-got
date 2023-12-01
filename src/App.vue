@@ -1,9 +1,11 @@
 <template>
-  <div
-    className="flex flex-col items-center bg-primary  w-screen h-full  pt-12"
-  >
-    <NavBar />
-    <router-view></router-view>
+  <div class="flex flex-col items-center bg-primary w-screen h-screen py-12">
+    <div class="flex flex-col items-center w-8/12 h-full">
+      <NavBar />
+      <div class="border-2 border-slate-300 overflow-scroll h-full w-10/12 p-4">
+        <router-view></router-view>
+      </div>
+    </div>
   </div>
 </template>
 

@@ -1,17 +1,17 @@
 <template>
-  <div class="border-2 w-8/12 h-screen mb-6">
-    <ul>
+  <div class="flex flex-col items-start h-full w-12/12">
+    <ul class="h-[400px]">
       <li
         v-for="(quote, index) in randomQuotes"
         :key="index"
-        class="bg-blue-500 ml-14 mb-4 text-white text-lg w-6/12 p-2 border-2 rounded-lg"
+        class="flex items-center bg-blue-500 mb-4 text-white h-[60px] text-xl w-[700px] px-4 text-left border-2 rounded-lg"
       >
         {{ quote.sentence }}
       </li>
     </ul>
     <button
       @click="handleClick"
-      class="flex items-start bg-gray-500 hover:bg-gray-700 text-white ml-14 mb-4 text-white text-lg w-2/12 p-2 border-2 rounded-lg"
+      class="flex items-start bg-gray-500 hover:bg-gray-700 text-white text-lg w-2/12 p-2 rounded-lg"
     >
       More Quotes
     </button>

@@ -1,21 +1,23 @@
 <template>
-  <div class="flex flex-col items-start h-full w-8/12">
-    <div v-for="house in houseData" :key="house.name" class="">
-      <button @click="toggleSelectedHouse(house)" class="focus:outline-none">
-        <p class="bg-blue-500 rounded-xl text-xl text-white m-2 p-2">
-          {{ house.name }}
-        </p>
-      </button>
-      <div
-        v-if="isSelectedHouse(house)"
-        class="flex flex-col items-start bg-blue-400 ml-14 mb-4 text-white text-lg rounded-xl w-4/12 p-2"
-      >
-        <h3>Members of {{ house.name }}:</h3>
-        <ul>
-          <li v-for="member in house.members" :key="member.slug">
-            {{ member.name }}
-          </li>
-        </ul>
+  <div class="flex flex-col items-start h-full w-12/12">
+    <div class="flex flex-row items-center justify-center w-full pb-4">
+      <input
+        v-model="searchQuery"
+        class="rounded-xl shadow-navbar h-[50px] w-8/12 px-8 text-lg"
+        placeholder="Search for a House"
+      />
+    </div>
+    <div class="flex flex-col items-start w-full h-full overflow-scroll">
+      <div v-for="house in filteredHouses" :key="house.name">
+        <router-link
+          :to="{ name: 'house-members', params: { name: house.name } }"
+        >
+          <button class="focus:outline-none">
+            <p class="bg-blue-500 rounded-xl text-xl text-white m-2 p-2">
+              {{ house.name }}
+            </p>
+          </button>
+        </router-link>
       </div>
     </div>
   </div>
@@ -26,8 +28,16 @@ export default {
   data() {
     return {
       houseData: [],
-      selectedHouse: null,
+      searchQuery: "",
     };
+  },
+  computed: {
+    filteredHouses() {
+      const query = this.searchQuery.toLowerCase();
+      return this.houseData.filter((house) =>
+        house.name.toLowerCase().includes(query)
+      );
+    },
   },
   mounted() {
     this.fetchHouseData();
@@ -47,12 +57,6 @@ export default {
       } catch (error) {
         console.error("Error fetching house data:", error);
       }
-    },
-    toggleSelectedHouse(house) {
-      this.selectedHouse = this.selectedHouse === house ? null : house;
-    },
-    isSelectedHouse(house) {
-      return this.selectedHouse === house;
     },
   },
 };
